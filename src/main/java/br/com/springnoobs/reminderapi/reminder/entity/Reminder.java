@@ -7,80 +7,66 @@ import jakarta.persistence.Id;
 import java.time.Instant;
 
 @Entity
-public class Reminder
-{
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+public class Reminder {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	private String title;
+    private String title;
 
-	private Instant remindAt;
+    private Instant remindAt;
 
-	private Instant executedAt;
+    private Instant executedAt;
 
-	private boolean sent = false;
+    private boolean sent = false;
 
-	public Reminder()
-	{
-	}
+    public Reminder() {}
 
-	public Reminder(Long id, String title, Instant remindAt, Instant executedAt, boolean sent)
-	{
-		this.id = id;
-		this.title = title;
-		this.remindAt = remindAt;
-		this.executedAt = executedAt;
-		this.sent = sent;
-	}
+    public Reminder(Long id, String title, Instant remindAt, Instant executedAt, boolean sent) {
+        this.id = id;
+        this.title = title;
+        this.remindAt = remindAt;
+        this.executedAt = executedAt;
+        this.sent = sent;
+    }
 
-	public Long getId()
-	{
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id)
-	{
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getTitle()
-	{
-		return title;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public void setTitle(String title)
-	{
-		this.title = title;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public Instant getRemindAt()
-	{
-		return remindAt;
-	}
+    public Instant getRemindAt() {
+        return remindAt;
+    }
 
-	public void setRemindAt(Instant remindAt)
-	{
-		this.remindAt = remindAt;
-	}
+    public void setRemindAt(Instant remindAt) {
+        this.remindAt = remindAt;
+    }
 
-	public Instant getExecutedAt()
-	{
-		return executedAt;
-	}
+    public Instant getExecutedAt() {
+        return executedAt;
+    }
 
-	public void setExecutedAt(Instant executedAt)
-	{
-		this.executedAt = executedAt;
-	}
+    public void setExecutedAt(Instant executedAt) {
+        this.executedAt = executedAt;
+    }
 
-	public boolean isSent()
-	{
-		return sent;
-	}
+    public boolean isSent() {
+        return sent;
+    }
 
-	public void setSent(boolean sent)
-	{
-		this.sent = sent;
-	}
+    public void setSent(boolean sent) {
+        this.sent = sent;
+    }
 }

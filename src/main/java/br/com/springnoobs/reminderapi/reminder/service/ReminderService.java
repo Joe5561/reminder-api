@@ -66,11 +66,11 @@ public class ReminderService {
             throw new PastRemindAtException("RemindAt should be a date in the future!");
         }
 
-        reminderSchedulerService.updateSchedule(reminder);
+        reminderSchedulerService.deleteSchedule(reminder);
 
         BeanUtils.copyProperties(dto, reminder);
 
-        reminderSchedulerService.deleteSchedule(reminder);
+        reminderSchedulerService.createSchedule(reminder);
 
         return ReminderMapper.toUpdateReminderResponseDTO(repository.save(reminder));
     }

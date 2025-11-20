@@ -52,7 +52,7 @@ public class ReminderService {
     }
 
     public List<FindAllReminderResponseDTO> findAll(Pageable pageable) {
-        return repository.findAllOrderByRemindAtAsc(pageable).stream()
+        return repository.findAllByOrderByRemindAtAsc(pageable).stream()
                 .map(ReminderMapper::toFindAllReminderResponseDTO)
                 .toList();
     }

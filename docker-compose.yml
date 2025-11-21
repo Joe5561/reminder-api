@@ -1,0 +1,45 @@
+services:
+  reminder-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: reminder-api
+    ports:
+      - "8080:8080"
+    environment:
+      DB_CONNECTION_URL: CHANGE_ME
+      DB_USERNAME: CHANGE_ME
+      DB_PASSWORD: CHANGE_ME
+      DB_DRIVER_CLASS_NAME: CHANGE_ME
+      DB_DIALECT: CHANGE_ME
+
+      SPRING_DATASOURCE_HIKARI_INITIALIZATION_FAIL_TIMEOUT: -1
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - reminder-net
+
+  mysql:
+    image: mysql:8.0
+    container_name: reminder-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "reminder"
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-proot" ]
+      interval: 3s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - reminder-net
+
+networks:
+  reminder-net:
+
+volumes:
+  mysql_data:
